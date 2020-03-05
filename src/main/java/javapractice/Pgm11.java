@@ -6,15 +6,15 @@ public class Pgm11 {
 
 	public static void main(String[] args) {
 		char alpha;
+		boolean ch;
 		Scanner input=new Scanner(System.in);
+		System.out.println("enter the character");
 		alpha=input.next().charAt(0);
-		if((int)alpha>=65 && (int)alpha<=90)
-			System.out.println("character entered is uppercase\n");
-		else if ((int)alpha>=97 && (int)alpha<=122)
-			System.out.println("character entered is lowercase\n");
+		ch=Character.isLowerCase(alpha);
+		if(ch)
+			System.out.println("character entered is lowercase");
 		else
-			System.out.println("character entered is not an alphabet\n");
-
+			System.out.println("character entered is uppercase");
 	}
-
+	 
 }

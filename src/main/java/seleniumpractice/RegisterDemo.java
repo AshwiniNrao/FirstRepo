@@ -6,12 +6,15 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
+import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 
 public class RegisterDemo {
-		public static void main(String[] args) {
-			WebDriverManager.chromedriver().setup();
+	@Test
+	public void LoginDemo()
+	{
+					WebDriverManager.chromedriver().setup();
 			WebDriver driver= new ChromeDriver();
 			driver.get("http://services.smartbear.com/samples/TestComplete14/smartstore/");
 			driver.manage().window().maximize();
@@ -27,8 +30,8 @@ public class RegisterDemo {
 			smonth.selectByVisibleText("August");
 			Select syear = new Select(driver.findElement(By.xpath("//select[@name=\"DateOfBirthYear\"]")));
 			syear.selectByVisibleText("1989");
-			driver.findElement(By.id("Email")).sendKeys("testa@gmail.com");
-			driver.findElement(By.id("Username")).sendKeys("Melisa");
+			driver.findElement(By.id("Email")).sendKeys("test12@gmail.com");
+			driver.findElement(By.id("Username")).sendKeys("Melisaa");
 			driver.findElement(By.id("Password")).sendKeys("test123");
 			driver.findElement(By.id("ConfirmPassword")).sendKeys("test123");
 			driver.findElement(By.id("Company")).sendKeys("TEST");
@@ -44,5 +47,6 @@ public class RegisterDemo {
 			
 			driver.close();
 			
+	}
 		}
-}
+

@@ -1,5 +1,7 @@
 package seleniumpractice;
 
+
+
 import static org.testng.Assert.assertEquals;
 
 import java.util.concurrent.TimeUnit;
@@ -8,6 +10,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.Select;
+import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -42,9 +45,11 @@ public class vehicleInsurance
 			driver.findElement(By.id("listprice")).sendKeys("1200");
 			driver.findElement(By.id("licenseplatenumber")).sendKeys("abc123");
 			driver.findElement(By.id("annualmileage")).sendKeys("10000");
-			String currenturl=driver.getTitle();
-			System.out.println(currenturl);
+			String currenttitle=driver.getTitle();
+			System.out.println(currenttitle);
+			Assert.assertEquals(currenttitle,"Fill Vehicle Data");
 			driver.findElement(By.id("nextenterinsurantdata")).click();
+			
 			//Entering insurance applicant data
 			driver.findElement(By.id("firstname")).sendKeys("abc");
 			driver.findElement(By.id("lastname")).sendKeys("efg");
@@ -60,9 +65,11 @@ public class vehicleInsurance
 			driver.findElement(By.xpath("//input[@id=\"other\"]/following-sibling::span")).click();
 			driver.findElement(By.id("website")).sendKeys("www.abc.com");
 			driver.findElement(By.id("picture")).sendKeys("picture");
-			String currenturl1=driver.getTitle();
-			System.out.println(currenturl1);
+			String currenttitle1=driver.getTitle();
+			System.out.println(currenttitle1);
+			Assert.assertEquals(currenttitle1,"Fill Insurant Data");
 			driver.findElement(By.id("nextenterproductdata")).click();
+			
 			//Entering product data
 			driver.findElement(By.id("startdate")).sendKeys("07/14/2020");
 			Select sumOfInsurance=new Select(driver.findElement(By.id("insurancesum")));
@@ -74,20 +81,26 @@ public class vehicleInsurance
 			driver.findElement(By.xpath("//input[@id=\"EuroProtection\"]/following-sibling::span")).click();
 			Select CCar=new Select(driver.findElement(By.id("courtesycar")));
 			CCar.selectByVisibleText("Yes");
-			String currenturl2=driver.getTitle();
-			System.out.println(currenturl2);
+			String currenttitle2=driver.getTitle();
+			System.out.println(currenttitle2);
+			Assert.assertEquals(currenttitle2,"Fill Product Data");
 			driver.findElement(By.id("nextselectpriceoption")).click();
+			
 			//entering quote
 			driver.findElement(By.xpath("//input[@id=\"selectplatinum\"]/following-sibling::span")).click();
+			String currenttitle3=driver.getTitle();
+			System.out.println(currenttitle3);
+			Assert.assertEquals(currenttitle3,"Choose Price Option");
 			driver.findElement(By.id("nextsendquote")).click();
+			
 			driver.findElement(By.id("email")).sendKeys("athu1@gmail.com");
 			driver.findElement(By.id("phone")).sendKeys("0123456789");
 			driver.findElement(By.id("username")).sendKeys("atharva1");
 			driver.findElement(By.id("password")).sendKeys("Ashwini123");
 			driver.findElement(By.id("confirmpassword")).sendKeys("Ashwini123");
 			driver.findElement(By.id("Comments")).sendKeys("send quote asap");
-			String currenturl3=driver.getTitle();
-			System.out.println(currenturl3);
+			
+			
 			//confirming the quotation
 			driver.findElement(By.id("sendemail")).click();
 			driver.close();
